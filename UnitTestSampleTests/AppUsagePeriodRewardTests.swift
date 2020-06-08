@@ -61,7 +61,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 0
+                expected: AppUsagePeriodReward.none.rawValue
             )
             expectation.fulfill()
         })
@@ -87,7 +87,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 1
+                expected: AppUsagePeriodReward.one.rawValue
             )
             expectation.fulfill()
         })
@@ -104,7 +104,7 @@ extension AppUsagePeriodRewardTests {
         let lastRewardDate = "2020/06/02 09:00:00 +09:00".toDate(with: "yyyy/MM/dd HH:mm:ss Z")!
         AppPreferences.shared.set(value: lastRewardDate, forKey: .lastRewardDate)
 
-        AppPreferences.shared.set(value: 1, forKey: .lastAppUsagePeriodRewardRawValue)
+        AppPreferences.shared.set(value: AppUsagePeriodReward.one.rawValue, forKey: .lastAppUsagePeriodRewardRawValue)
 
         let currentDate = Calendar.gregorianJST().move(lastRewardDate, byDays: 2)
         let expectation = self.expectation(description: "過去リワード1回_リワード無しのテスト")
@@ -123,7 +123,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 1
+                expected: AppUsagePeriodReward.one.rawValue
             )
             expectation.fulfill()
         })
@@ -138,7 +138,7 @@ extension AppUsagePeriodRewardTests {
         let lastRewardDate = "2020/06/02 09:00:00 +09:00".toDate(with: "yyyy/MM/dd HH:mm:ss Z")!
         AppPreferences.shared.set(value: lastRewardDate, forKey: .lastRewardDate)
 
-        AppPreferences.shared.set(value: 1, forKey: .lastAppUsagePeriodRewardRawValue)
+        AppPreferences.shared.set(value: AppUsagePeriodReward.one.rawValue, forKey: .lastAppUsagePeriodRewardRawValue)
 
         let currentDate = Calendar.gregorianJST().move(lastRewardDate, byDays: 3)
         let expectation = self.expectation(description: "過去リワード1回_2回目のリワード付与のテスト")
@@ -155,7 +155,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 2
+                expected: AppUsagePeriodReward.two.rawValue
             )
             expectation.fulfill()
         })
@@ -172,7 +172,7 @@ extension AppUsagePeriodRewardTests {
         let lastRewardDate = "2020/06/05 09:00:00 +09:00".toDate(with: "yyyy/MM/dd HH:mm:ss Z")!
         AppPreferences.shared.set(value: lastRewardDate, forKey: .lastRewardDate)
 
-        AppPreferences.shared.set(value: 2, forKey: .lastAppUsagePeriodRewardRawValue)
+        AppPreferences.shared.set(value: AppUsagePeriodReward.two.rawValue, forKey: .lastAppUsagePeriodRewardRawValue)
 
         let currentDate = Calendar.gregorianJST().move(lastRewardDate, byDays: 4)
         let expectation = self.expectation(description: "過去リワード2回_リワード無しのテスト")
@@ -191,7 +191,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 2
+                expected: AppUsagePeriodReward.two.rawValue
             )
             expectation.fulfill()
         })
@@ -206,7 +206,7 @@ extension AppUsagePeriodRewardTests {
         let lastRewardDate = "2020/06/05 09:00:00 +09:00".toDate(with: "yyyy/MM/dd HH:mm:ss Z")!
         AppPreferences.shared.set(value: lastRewardDate, forKey: .lastRewardDate)
 
-        AppPreferences.shared.set(value: 2, forKey: .lastAppUsagePeriodRewardRawValue)
+        AppPreferences.shared.set(value: AppUsagePeriodReward.two.rawValue, forKey: .lastAppUsagePeriodRewardRawValue)
 
         let currentDate = Calendar.gregorianJST().move(lastRewardDate, byDays: 5)
         let expectation = self.expectation(description: "過去リワード2回_3回目のリワード付与のテスト")
@@ -223,7 +223,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 3
+                expected: AppUsagePeriodReward.more.rawValue
             )
             expectation.fulfill()
         })
@@ -240,7 +240,7 @@ extension AppUsagePeriodRewardTests {
         let lastRewardDate = "2020/06/10 09:00:00 +09:00".toDate(with: "yyyy/MM/dd HH:mm:ss Z")!
         AppPreferences.shared.set(value: lastRewardDate, forKey: .lastRewardDate)
 
-        AppPreferences.shared.set(value: 3, forKey: .lastAppUsagePeriodRewardRawValue)
+        AppPreferences.shared.set(value: AppUsagePeriodReward.more.rawValue, forKey: .lastAppUsagePeriodRewardRawValue)
 
         let currentDate = Calendar.gregorianJST().move(lastRewardDate, byDays: 29)
         let expectation = self.expectation(description: "過去リワード3回_リワード無しのテスト")
@@ -259,7 +259,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 3
+                expected: AppUsagePeriodReward.more.rawValue
             )
             expectation.fulfill()
         })
@@ -274,7 +274,7 @@ extension AppUsagePeriodRewardTests {
         let lastRewardDate = "2020/06/10 09:00:00 +09:00".toDate(with: "yyyy/MM/dd HH:mm:ss Z")!
         AppPreferences.shared.set(value: lastRewardDate, forKey: .lastRewardDate)
 
-        AppPreferences.shared.set(value: 3, forKey: .lastAppUsagePeriodRewardRawValue)
+        AppPreferences.shared.set(value: AppUsagePeriodReward.more.rawValue, forKey: .lastAppUsagePeriodRewardRawValue)
 
         let currentDate = Calendar.gregorianJST().move(lastRewardDate, byDays: 30)
         let expectation = self.expectation(description: "過去リワード3回_4回目のリワード付与のテスト")
@@ -291,7 +291,7 @@ extension AppUsagePeriodRewardTests {
             )
             self?.verifyLastAppUsagePeriodRewardRawValue(
                 AppPreferences.shared.int(forKey: .lastAppUsagePeriodRewardRawValue),
-                expected: 3
+                expected: AppUsagePeriodReward.more.rawValue
             )
             expectation.fulfill()
         })
